@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProductsDetails.Models.Product_Detail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Product List</h2>
+
+    <div class="card mb-3">
+       <div class="card-header">
+           <i class="fas fa-book"></i>
+           <a href="../Products/Create" class="btn btn-danger pull-right fa fa-plus">Add New</a>
+       </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped " id="dataTable" width="80%" cellspacing="0">
+                <thead style="background-color: whitesmoke">
+                    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Products", new { id = item.ProductId }, new { @class = "btn", style = "background-color:lightgreen;color:black" })
+            @Html.ActionLink("Delete", "Delete", "Products", new { id = item.ProductId }, new { @class = "btn", style = "background-color:lightblue;color:black;margin-top:5px" })
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+</div>
+</div>
